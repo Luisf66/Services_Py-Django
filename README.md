@@ -19,10 +19,6 @@ class Service {
         string name
         text description
         float price
-        date date
-        time hours
-        float rating
-        string status
     }
 
     class User {
