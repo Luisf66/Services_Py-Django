@@ -59,10 +59,9 @@ class Service {
         float rating
     }
 
-    User "1" -- "0..*" ServiceRequest : solicita
-    User "1" -- "0..*" ServiceRequest : presta
-    Service "1" -- "1..*" ServiceRequest : é solicitado
-    User "1" -- "1" Address : possui
+    User "1" -- "0..*" ServiceRequest : requests
+    User "1" -- "0..*" ServiceRequest : provides
+    Service "1" -- "0..*" ServiceRequest : is_requested
     User "1" -- "1..*" PhoneNumber : has
     User "1" -- "1..*" Address : has
 ```
