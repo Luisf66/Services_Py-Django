@@ -15,6 +15,13 @@ class ServiceListView(ListView):
     template_name = 'services_list.html'
     context_object_name = 'services'
 
+    def get_queryset(self):
+        query = super().get_queryset().order_by('name')
+        search = self.request.GET.get('search')
+        if search:
+            query = query.filter(name__icontains=search)
+        return query
+
 class ServiceDetailView(DetailView):
     model = Service
     template_name = 'service_detail.html'
