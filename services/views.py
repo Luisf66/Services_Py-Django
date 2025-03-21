@@ -26,3 +26,8 @@ class ServiceUpdateView(UpdateView):
     success_url = '/services/'
     #def get_success_url(self):
     #    return reverse_lazy('services', kwargs={'pk': self.object.pk})
+
+class ServiceDeleteView(DeleteView):
+    model = Service
+    template_name = 'service_delete.html'
+    success_url = '/services/'
