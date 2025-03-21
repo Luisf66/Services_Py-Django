@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from services.views import NewServiceCreateView
+from services.views import NewServiceCreateView, ServiceListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('new_service/', NewServiceCreateView.as_view(), name='new_service'),
+    path('services/', ServiceListView.as_view(), name='services'),
 ]

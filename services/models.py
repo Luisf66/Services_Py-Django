@@ -2,12 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Service(models.Model):
-    STATUS_CHOICES = [
-        ('pending', 'Pendente'),
-        ('accepted', 'Aceito'),
-        ('completed', 'Concluído'),
-        ('canceled', 'Cancelado'),
-    ]
+    #STATUS_CHOICES = [
+        #('pending', 'Pendente'),
+        #('accepted', 'Aceito'),
+        #('completed', 'Concluído'),
+        #('canceled', 'Cancelado'),
+    #]
 
     
     name = models.CharField(max_length=100)
@@ -21,4 +21,4 @@ class Service(models.Model):
     #status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
 
     def __str__(self):
-        return f'{self.name} - {self.get_status_display()}'
+        return f'{self.name}'
