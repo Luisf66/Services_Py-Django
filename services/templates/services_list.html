@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* Global Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  /* Header Styles */
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  /* Form Styles */
+  form {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+  }
+
+  input[type="text"] {
+    width: 50%;
+    height: 2em;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+  }
+
+  button[type="submit"] {
+    width: 10%;
+    height: 2em;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #555;
+  }
+
+  /* Car Grid Styles */
+  .car_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    padding: 2em;
+  }
+
+  .car_card {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .car_card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .car_card img {
+    width: 100%;
+    height: 250px; /* Aumentei o tamanho da imagem para 250px */
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .car_card h2 {
+    margin: 0;
+    padding: 1em 0;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .car_card p {
+    margin: 0;
+    padding: 1em 0;
+    font-size: 1em;
+    color: #666;
+  }
+
+  /* No Results Styles */
+  .no-results {
+    text-align: center;
+    padding: 2em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #666;
+  }
+
+  a{
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  a:hover{
+    color: #0096c7;
+  }
+</style>
+
+<form method="GET" action="{% url 'services' %}">
+  <input type="text" name="search" placeholder="Buscar Serviço">
+  <button type="submit">Buscar</button>
+</form>
+
+  <h1 style="text-align: center;">Lista de Serviços</h1>
+  <ul>
+    {% if services %}
+      {% for service in services %}
+        <a href="{% url 'service_detail' service.pk %}">
+          <div class="car_card">
+            <h2>{{ service.name }}</h2>
+            <p>Preço: {{ service.price }}</p>
+            <p>Descrição: {{ service.description }}</p>
+          </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-results">Nenhum serviço encontrado.</p>
+    {% endif %}
+  </ul>
+{% endblock %}

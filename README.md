@@ -10,6 +10,58 @@ Usuários podem **buscar e requisitar serviços**, enquanto prestadores podem **
 ✅ Aceitação ou recusa de solicitações de serviço.  
 ✅ Painel administrativo para gerenciamento dos dados.  
 
+## Esquema do Banco de Dados
+
+```mermaid
+classDiagram
+class Service {
+        int id
+        string name
+        text description
+        float price
+    }
+
+    class User {
+        int id
+        string name
+        string email
+        string profile
+    }
+    
+    class PhoneNumber {
+        int id
+        string number
+    }
+    
+    class Address {
+        int id
+        string street
+        string neighborhood
+        string house_number
+        string city
+        string state
+        string zip_code
+    }
+
+    class ServiceRequest {
+        int id
+        int user_id
+        int provider_id
+        int service_id
+        string status
+        datetime request_date
+        datetime completion_date
+        text review
+        float rating
+    }
+
+    User "1" -- "0..*" ServiceRequest : requests
+    User "1" -- "0..*" ServiceRequest : provides
+    Service "1" -- "0..*" ServiceRequest : is_requested
+    User "1" -- "1..*" PhoneNumber : has
+    User "1" -- "1..*" Address : has
+```
+
 ## 🛠️ Tecnologias Utilizadas  
 - **Django** – Framework web Python.  
 - **Django Authentication** – Sistema de autenticação de usuários.  
