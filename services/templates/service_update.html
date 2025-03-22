@@ -115,7 +115,7 @@
     <div>
       <div class="buttons-container">
         <input type="submit" value="Salvar Alterações" class="btn btn-primary">
-        <a href="{% url 'services' %}" class="btn btn-secondary">Cancelar</a>
+        <a href="{% url 'service_detail' pk=object.pk %}" class="btn btn-secondary">Cancelar</a>
       </div>
     </div>
   </form>

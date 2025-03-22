@@ -8,7 +8,9 @@ class NewServiceCreateView(CreateView):
     model = Service
     form_class = ServiceModelForm
     template_name = 'new_service.html'
-    success_url = '/services/'
+
+    def get_success_url(self):
+        return reverse_lazy('services')
 
 class ServiceListView(ListView):
     model = Service
@@ -30,9 +32,9 @@ class ServiceUpdateView(UpdateView):
     model = Service
     form_class = ServiceModelForm
     template_name = 'service_update.html'
-    success_url = '/services/'
-    #def get_success_url(self):
-    #    return reverse_lazy('services', kwargs={'pk': self.object.pk})
+
+    def get_success_url(self):
+        return reverse_lazy('service_detail', kwargs={'pk': self.object.pk})
 
 class ServiceDeleteView(DeleteView):
     model = Service
