@@ -7,38 +7,40 @@
   <style>
     /* Global Styles */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
+      background-color: #f4f7fc; /* Cor de fundo mais suave */
+      color: #444; /* Cor de texto mais suave */
     }
 
     /* Header Styles */
     header {
-      background-color: #0096c7;
-      color: #fff;
+      background-color: #2f3640; /* Azul escuro mais suave */
+      color: #ecf0f1; /* Texto claro */
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
     }
 
     /* Footer Styles */
     footer {
-      background-color: #ccc;
-      color: #333;
+      background-color: #34495e; /* Cinza escuro */
+      color: #ecf0f1; /* Texto claro */
       padding: 20px;
       text-align: center;
     }
 
     /* Navigation Styles */
     nav {
-      background-color: #0096c7;
-      color: #fff;
-      height: 50px;
+      background-color: #2f3640; /* Azul escuro mais suave */
+      color: #ecf0f1;
+      height: 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
     }
 
     nav ul {
@@ -49,28 +51,40 @@
     }
 
     nav ul li {
-      margin: 0 10px;
+      margin: 0 20px;
     }
 
     nav ul li a {
-      color: #fff;
+      color: #ecf0f1; /* Cor clara para os links */
       text-decoration: none;
-      font-size: 16px;
-      padding: 15px;
-      transition: all 0.3s ease;
+      font-size: 18px;
+      padding: 15px 0;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav ul li a:hover {
-      background-color: #32bbe8;
+      color: #f39c12; /* Dourado suave no hover */
+      background-color: #34495e; /* Cor de fundo sutil e elegante */
+      transform: scale(1.05); /* Leve aumento de tamanho no hover */
     }
 
     nav ul li.active a {
-      background-color: #666;
+      background-color: #e67e22; /* Laranja queimado para o item ativo */
+      color: #fff; /* Texto claro no item ativo */
     }
 
     nav ul li.active a:hover {
-      background-color: #999;
+      background-color: #f39c12; /* Dourado suave no hover do item ativo */
+      color: #fff; /* Manter a cor clara no hover do item ativo */
     }
+
+    /* Main Content Styles */
+    main {
+      padding: 40px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o conteúdo */
+    }
+
   </style>
 </head>
 <body>

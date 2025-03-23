@@ -2,22 +2,23 @@
 
 {% block content %}
 <style>
+    /* Card Styles */
     .car-card {
-      background-color: #e3e1e1;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
+      background-color: #f9f9f9; /* Cor mais suave para o fundo do card */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 12px; /* Bordas mais arredondadas para um visual mais suave */
       overflow: hidden;
       text-align: center;
       transition: all 0.3s ease;
       max-width: 500px;
-      margin: 20px auto 0;
+      margin: 20px auto;
       margin-bottom: 20px;
     }
 
     .car-card:hover {
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px); /* Leve elevação para dar um efeito mais elegante */
     }
 
     .car-card img {
@@ -28,14 +29,17 @@
 
     .car-card h2 {
       font-size: 1.5rem;
-      margin: 10px;
+      margin: 15px;
+      color: #34495e; /* Cor do título mais sóbria e moderna */
     }
 
     .car-card p {
       font-size: 1rem;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      color: #7f8c8d; /* Cor de texto mais neutra */
     }
 
+    /* Buttons container */
     .buttons-container {
       display: flex;
       justify-content: center;
@@ -45,47 +49,51 @@
 
     .btn {
       display: inline-block;
-      background-color: #0096c7;
+      background-color: #16a085; /* Cor mais suave e elegante */
       color: #fff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       font-size: 16px;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease;
       margin: 0 10px;
     }
 
     .btn:hover {
-      background-color: #108eb8;
+      background-color: #1abc9c; /* Cor mais forte no hover */
+      transform: scale(1.05); /* Leve aumento no hover para interatividade */
     }
 
     .btn-danger {
-      background-color: #d9534f;
-      text-decoration: none !important;
+      background-color: #e74c3c; /* Vermelho mais suave */
     }
 
     .btn-danger:hover {
-      background-color: #d2221c;
+      background-color: #c0392b; /* Vermelho mais forte no hover */
     }
 
     .error-message {
-      color: #d9534f;
+      color: #e74c3c; /* Cor de erro mais visível */
       font-size: 14px;
       margin-top: 5px;
     }
 
+    /* Link Styles */
     a {
       text-decoration: none !important;
     }
-  </style>
-  <div class="car-card">
-      <h2>{{ object.name }}</h2>
-      <p><strong>Preço:</strong> R$ {{ object.price }}</p>
-      <p><strong>Descrição:</strong> {{ object.description }}</p>
-  </div>
-  <div class="buttons-container">
-      <a href="{% url 'service_update' object.pk %}" class="btn">Editar</a>
-      <a href="{% url 'service_delete' object.pk %}" class="btn btn-danger">Excluir</a>
-  </div>
+</style>
+
+<div class="car-card">
+    <h2>{{ object.name }}</h2>
+    <p><strong>Preço:</strong> R$ {{ object.price }}</p>
+    <p><strong>Descrição:</strong> {{ object.description }}</p>
+</div>
+
+<div class="buttons-container">
+    <a href="{% url 'service_update' object.pk %}" class="btn">Editar</a>
+    <a href="{% url 'service_delete' object.pk %}" class="btn btn-danger">Excluir</a>
+</div>
+
 {% endblock %}
