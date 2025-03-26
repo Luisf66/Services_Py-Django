@@ -86,6 +86,9 @@
 </style>
 
 <div class="car-card">
+    {% if object.photo %}
+        <img src="{{ object.photo.url }}" alt="{{ object.name }}"> <!-- Adicionando imagem ao card -->
+    {% endif %}
     <h2>{{ object.name }}</h2>
     <p><strong>Preço:</strong> R$ {{ object.price }}</p>
     <p><strong>Descrição:</strong> {{ object.description }}</p>

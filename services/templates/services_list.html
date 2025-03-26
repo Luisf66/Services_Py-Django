@@ -148,8 +148,10 @@
     {% for service in services %}
       <a href="{% url 'service_detail' service.pk %}">
         <div class="car_card">
-          <img src="{{ service.image.url }}" alt="{{ service.name }}"> <!-- Adicionando imagem ao card -->
-          <h2>{{ service.name }}</h2>
+          {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="{{ service.name }}"> <!-- Adicionando imagem ao card -->
+          {% endif %}
+            <h2>{{ service.name }}</h2>
           <p class="price">Preço: R$ {{ service.price }}</p>
           <p>{{ service.description }}</p>
         </div>
