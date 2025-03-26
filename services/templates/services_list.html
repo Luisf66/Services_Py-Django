@@ -4,97 +4,114 @@
 <style>
   /* Global Styles */
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f5f7fa; /* Cor de fundo suave e moderna */
+    color: #333; /* Cor de texto suave */
   }
 
   /* Header Styles */
   header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
+    background-color: #2c3e50; /* Azul escuro */
+    color: #ecf0f1; /* Texto claro */
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
   }
 
   header h1 {
     margin: 0;
+    font-size: 2em;
+    font-weight: 600;
   }
 
   /* Form Styles */
   form {
     display: flex;
     justify-content: center;
-    margin: 2em 0;
+    margin: 3em 0;
   }
 
   input[type="text"] {
-    width: 50%;
-    height: 2em;
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
+    width: 40%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1.1em;
+    color: #333;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus {
+    border-color: #16a085; /* Cor suave para o foco */
+    outline: none;
   }
 
   button[type="submit"] {
-    width: 10%;
-    height: 2em;
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
+    background-color: #16a085; /* Verde suave */
     color: #fff;
+    border: none;
+    padding: 0.8em 2em;
+    border-radius: 25px;
     cursor: pointer;
+    font-size: 1.1em;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
   }
 
   button[type="submit"]:hover {
-    background-color: #555;
+    background-color: #1abc9c; /* Verde mais intenso no hover */
   }
 
   /* Car Grid Styles */
   .car_grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
+    grid-gap: 2em;
     padding: 2em;
   }
 
   .car_card {
     background-color: #fff;
-    padding: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave e elegante */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .car_card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte e movimento ao passar o mouse */
   }
 
   .car_card img {
     width: 100%;
-    height: 250px; /* Aumentei o tamanho da imagem para 250px */
+    height: 200px;
     object-fit: cover;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px;
   }
 
   .car_card h2 {
-    margin: 0;
-    padding: 1em 0;
-    font-size: 1.5em;
-    font-weight: bold;
+    margin: 1em 0;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #2c3e50; /* Cor de título mais escuro */
   }
 
   .car_card p {
-    margin: 0;
-    padding: 1em 0;
-    font-size: 1em;
-    color: #666;
+    margin: 0.5em 0;
+    font-size: 1.1em;
+    color: #7f8c8d; /* Cor suave para o texto */
+  }
+
+  .car_card .price {
+    font-size: 1.3em;
+    color: #16a085; /* Cor destacada para o preço */
+    font-weight: 600;
   }
 
   /* No Results Styles */
@@ -103,18 +120,21 @@
     padding: 2em;
     font-size: 1.5em;
     font-weight: bold;
-    color: #666;
+    color: #7f8c8d;
   }
 
-  a{
+  /* Link Styles */
+  a {
     font-size: 18px;
-    color: #333;
+    color: #2c3e50;
     text-decoration: none;
+    transition: color 0.3s ease;
   }
 
-  a:hover{
-    color: #0096c7;
+  a:hover {
+    color: #16a085; /* Cor para hover nos links */
   }
+
 </style>
 
 <form method="GET" action="{% url 'services' %}">
@@ -122,19 +142,24 @@
   <button type="submit">Buscar</button>
 </form>
 
-  <h1 style="text-align: center;">Lista de Serviços</h1>
-  <ul>
-    {% if services %}
-      {% for service in services %}
-        <a href="{% url 'service_detail' service.pk %}">
-          <div class="car_card">
+<h1 style="text-align: center;">Lista de Serviços</h1>
+<div class="car_grid">
+  {% if services %}
+    {% for service in services %}
+      <a href="{% url 'service_detail' service.pk %}">
+        <div class="car_card">
+          {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="{{ service.name }}"> <!-- Adicionando imagem ao card -->
+          {% endif %}
             <h2>{{ service.name }}</h2>
-            <p>Preço: {{ service.price }}</p>
-            <p>Descrição: {{ service.description }}</p>
-          </div>
-      {% endfor %}
-    {% else %}
-      <p class="no-results">Nenhum serviço encontrado.</p>
-    {% endif %}
-  </ul>
+          <p class="price">Preço: R$ {{ service.price }}</p>
+          <p>{{ service.description }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  {% else %}
+    <p class="no-results">Nenhum serviço encontrado.</p>
+  {% endif %}
+</div>
+
 {% endblock %}

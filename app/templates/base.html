@@ -7,38 +7,39 @@
   <style>
     /* Global Styles */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
+      background-color: #e3e7ee; /* Azul acinzentado bem claro */
+      color: #333; /* Texto mais escuro */
     }
 
     /* Header Styles */
     header {
-      background-color: #0096c7;
-      color: #fff;
+      background-color: #555 !important; /* Cinza médio */
+      color: #ecf0f1; /* Texto claro */
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
     }
 
     /* Footer Styles */
     footer {
-      background-color: #ccc;
-      color: #333;
+      background-color: #666; /* Cinza um pouco mais escuro */
+      color: #ecf0f1; /* Texto claro */
       padding: 20px;
       text-align: center;
     }
 
     /* Navigation Styles */
     nav {
-      background-color: #0096c7;
-      color: #fff;
-      height: 50px;
+      background-color: #555; /* Cinza médio */
+      color: #ecf0f1;
+      height: 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 30px;
     }
 
     nav ul {
@@ -49,28 +50,40 @@
     }
 
     nav ul li {
-      margin: 0 10px;
+      margin: 0 20px;
     }
 
     nav ul li a {
-      color: #fff;
+      color: #ecf0f1; /* Cor clara para os links */
       text-decoration: none;
-      font-size: 16px;
-      padding: 15px;
-      transition: all 0.3s ease;
+      font-size: 18px;
+      padding: 10px 25px;
+      border-radius: 30px; /* Botões estilo pílula */
+      transition: color 0.3s ease, background-color 0.3s ease;
     }
 
     nav ul li a:hover {
-      background-color: #32bbe8;
+      color:rgb(0, 0, 0) !important; /* Dourado suave no hover */
+      background-color: #777; /* Cinza mais escuro no hover */
+      border-radius: 10px; /* Cantos levemente arredondados */
     }
 
     nav ul li.active a {
-      background-color: #666;
+      background-color: #888; /* Cinza ainda mais escuro para o item ativo */
+      color: #fff; /* Texto claro no item ativo */
     }
 
     nav ul li.active a:hover {
-      background-color: #999;
+      background-color: #999; /* Cinza mais claro no hover do item ativo */
+      color: #fff;
     }
+
+    /* Main Content Styles */
+    main {
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o conteúdo */
+    }
+
   </style>
 </head>
 <body>

@@ -1,10 +1,93 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <style>
+    /* Estilos gerais para centralização */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    /* Formulário Estilos */
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #ffffff; /* Cor de fundo mais neutra e profissional */
+      border-radius: 12px; /* Bordas mais suaves */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave e elegante */
+    }
+
+    form h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #34495e; /* Cor escura e sóbria para o título */
+    }
+
+    /* Estilo para os campos do formulário */
+    input[type="text"], input[type="number"], select, textarea {
+      padding: 12px;
+      font-size: 14px;
+      border: 2px solid #ddd;
+      border-radius: 6px; /* Bordas mais arredondadas */
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 12px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #1abc9c; /* Cor suave para o foco */
+    }
+
+    /* Container para o botão de salvar centralizado */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Botão de salvar */
+    button {
+      background-color: #1abc9c; /* Cor do botão */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 200px; /* Tamanho do botão ajustado */
+    }
+
+    button:hover {
+      background-color: #16a085;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <div class="container">
     <h1>Adicionar Serviço</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="button-container">
         <button type="submit">Salvar</button>
+      </div>
     </form>
+  </div>
 {% endblock %}

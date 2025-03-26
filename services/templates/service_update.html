@@ -3,21 +3,24 @@
 {% block content %}
 
   <style>
+    /* Formulário Estilos */
     form {
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      background-color: #ffffff; /* Cor de fundo mais neutra e profissional */
+      border-radius: 12px; /* Bordas mais suaves */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave e elegante */
     }
 
     form h1 {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       text-align: center;
+      color: #34495e; /* Cor escura e sóbria para o título */
     }
 
+    /* Tabela Estilos */
     table {
       margin: 0 auto;
       border-collapse: collapse;
@@ -26,77 +29,72 @@
     }
 
     th, td {
-      padding: 4px;
+      padding: 12px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
 
     th {
-      background-color: #f2f2f2;
+      background-color: #ecf0f1; /* Cor clara para cabeçalhos */
+      font-weight: bold;
     }
 
+    td {
+      background-color: #f9f9f9;
+    }
+
+    /* Estilos de Inputs */
     input[type="text"], input[type="number"], select, textarea {
-      padding: 8px;
+      padding: 12px;
       font-size: 14px;
       border: 2px solid #ddd;
-      border-radius: 4px;
+      border-radius: 6px; /* Bordas mais arredondadas */
       width: 100%;
       max-width: 300px;
-      margin-bottom: 8px;
-      transition: border-bottom-color 0.3s ease-in-out;
+      margin-bottom: 12px;
+      transition: border-color 0.3s ease-in-out;
     }
 
     input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
       outline: none;
-      border-bottom-color: #0096c7;
+      border-color: #1abc9c; /* Cor suave para o foco */
     }
 
+    /* Botões Estilos */
     .btn {
-      background-color: #0096c7;
+      background-color: #1abc9c; /* Cor verde suave */
       color: #fff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 16px;
-      border-radius: 4px;
+      border-radius: 6px; /* Bordas arredondadas */
       cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #16a085; /* Cor mais escura no hover */
+      transform: scale(1.05); /* Efeito de aumento suave */
+    }
+
+    .btn-secondary {
+      background-color: #e74c3c; /* Cor vermelha para o botão de cancelar */
+    }
+
+    .btn-secondary:hover {
+      background-color: #c0392b; /* Cor vermelha mais escura no hover */
     }
 
     .buttons-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin-top: 30px;
+      gap: 20px; /* Espaço entre os botões */
     }
 
-    .btn {
-      display: inline-block;
-      background-color: #0096c7;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-      margin: 0 10px;
-    }
-
-    .btn:hover {
-      background-color: #108eb8;
-    }
-
-    .btn-danger {
-      background-color: #d9534f;
-      text-decoration: none !important;
-    }
-
-    .btn-danger:hover {
-      background-color: #d2221c;
-    }
-
+    /* Mensagens de Erro */
     .error-message {
-      color: #d9534f;
+      color: #e74c3c; /* Cor vermelha para erro */
       font-size: 14px;
       margin-top: 5px;
     }
@@ -106,17 +104,17 @@
     }
 
   </style>
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>Editar Serviço</h1>
     <table>
       {{ form.as_table }}
     </table>
-    <div>
-      <div class="buttons-container">
-        <input type="submit" value="Salvar Alterações" class="btn btn-primary">
-        <a href="{% url 'services' %}" class="btn btn-secondary">Cancelar</a>
-      </div>
+    <div class="buttons-container">
+      <input type="submit" value="Salvar Alterações" class="btn">
+      <a href="{% url 'service_detail' pk=object.pk %}" class="btn btn-secondary">Cancelar</a>
     </div>
   </form>
+
 {% endblock %}
