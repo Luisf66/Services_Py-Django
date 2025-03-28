@@ -1,12 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Definição das opções de perfil do usuário
 PROFILE_CHOICES = (
     ('client', 'Cliente'),
     ('professional', 'Profissional')
 )
 
-class User(models.Model):
+class User(AbstractUser):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150, unique=True)  # Garantindo e-mails únicos
     profile = models.CharField(max_length=15, choices=PROFILE_CHOICES, default='client')

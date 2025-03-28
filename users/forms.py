@@ -1,10 +1,11 @@
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from . import models
 
-class UserForm(forms.ModelForm):
+class UserForm(UserCreationForm):
     class Meta:
         model = models.User
-        fields = '__all__'
+        fields = ['username', 'name', 'email', 'profile']
 
 class PhoneNumberForm(forms.ModelForm):
     class Meta:
@@ -22,3 +23,6 @@ class AddressForm(forms.ModelForm):
             'state',
             'zip_code'
         ]  # Campos do Address
+
+class CustomAuthenticationForm(AuthenticationForm):
+    pass 

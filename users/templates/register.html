@@ -1,14 +1,145 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Registrar Usuário</h2>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Garantir que a navbar fique fixa no topo */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #444;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    z-index: 1000;
+  }
+
+  /* Container principal */
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Espaço extra para evitar que os formulários fiquem escondidos sob a navbar */
+  .container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Layout dos cards */
+  .form-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+  }
+
+  /* Campos do formulário */
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Botão cadastrar */
+  .submit-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-submit {
+    background-color: #16a085;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn-submit:hover {
+    background-color: #1abc9c;
+  }
+
+  /* Responsividade */
+  @media (max-width: 900px) {
+    .form-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card {
+      width: 90%;
+    }
+  }
+</style>
+
+<script>
+  function submitAllForms() {
+    document.querySelectorAll(".form-container form").forEach(form => form.submit());
+  }
+</script>
+
+<!-- Container principal -->
+<div class="container">
+  
+  <!-- Cards do formulário -->
   <form method="post">
     {% csrf_token %}
-    {{ user_form.as_p }}  <!-- Campos do User -->
-    {{ phone_form.as_p }}  <!-- Campos do PhoneNumber -->
-    {{ address_form.as_p }}  <!-- Campos do Address -->
-    <button type="submit">Cadastrar</button>
+  
+    <div class="form-container">
+      <div class="card">
+        <h2>Dados do Usuário</h2>
+        {{ user_form.as_p }}
+      </div>
+  
+      <div class="card">
+        <h2>Contato</h2>
+        {{ phone_form.as_p }}
+      </div>
+  
+      <div class="card">
+        <h2>Endereço</h2>
+        {{ address_form.as_p }}
+      </div>
+    </div>
+  
+    <div class="submit-container">
+      <button type="submit" class="btn-submit">Cadastrar</button>
+    </div>
   </form>
+</div>
+
 {% endblock %}
-
-
