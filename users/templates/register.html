@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Registrar Usuário</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}  <!-- Campos do User -->
+    {{ phone_form.as_p }}  <!-- Campos do PhoneNumber -->
+    {{ address_form.as_p }}  <!-- Campos do Address -->
+    <button type="submit">Cadastrar</button>
+  </form>
+{% endblock %}
+
+
